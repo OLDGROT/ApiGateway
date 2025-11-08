@@ -10,7 +10,7 @@ import java.util.Random;
 
 @Service
 public class DiscoveryClient {
-    private final String discoveryUrl = "http://localhost:8084/discovery-service";
+    private final String discoveryUrl = "http://discovery-service:8080";
     private final WebClient webClient = WebClient.create();
     private final Random random = new Random();
 

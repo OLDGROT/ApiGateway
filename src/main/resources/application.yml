@@ -3,11 +3,6 @@ spring:
     name: "ApiGateway"
 
 server:
-  port: 8083
+  port: 8080
 
-gateway:
-  routes:
-    - path: /users/**
-      url: http://localhost:8081
-    - path: /notifications/**
-      url: http://localhost:8082
+
