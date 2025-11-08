@@ -32,6 +32,7 @@ public class ApiGatewayController {
 
         String path = request.getRequestURI();
         String target = extractServiceName(path);
+        System.out.println(target);
 
         Mono<ResponseEntity<String>> call = discoveryClient.discover(target)
                 .flatMap(t -> webClient.method(HttpMethod.valueOf(request.getMethod()))
@@ -53,6 +54,14 @@ public class ApiGatewayController {
 
     private String extractServiceName(String path) {
         String[] parts = path.split("/");
-        return parts.length > 1 ? parts[1] : "";
+        if (parts.length > 1) {
+            String service = parts[1];
+            return switch (service) {
+                case "users" -> "user-service";
+                case "notifications" -> "notification-service";
+                default -> service;
+            };
+        }
+        return "";
     }
 }

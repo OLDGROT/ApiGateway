@@ -16,7 +16,7 @@ public class DiscoveryClient {
 
     public Mono<String> discover(String serviceName) {
         return webClient.get()
-                .uri(discoveryUrl + "/get-serviice/" + serviceName)
+                .uri(discoveryUrl + "/get-service/" + serviceName)
                 .retrieve()
                 .bodyToMono(List.class)
                 .map(instances -> {
